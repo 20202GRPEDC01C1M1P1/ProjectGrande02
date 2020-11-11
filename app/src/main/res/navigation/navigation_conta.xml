@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_conta"
+    app:startDestination="@id/loginContaFragment">
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.projetogrande.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_createconta"
+            app:destination="@id/createconta" />
+        <action
+            android:id="@+id/action_menuFragment_to_listContaFragment"
+            app:destination="@id/listContaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createconta"
+        android:name="com.example.projetogrande.CreateViewModel.createconta"
+        android:label="fragment_createconta"
+        tools:layout="@layout/fragment_createconta" >
+        <action
+            android:id="@+id/action_createconta_to_menuFragment"
+            app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_createconta_to_listContaFragment"
+            app:destination="@id/listContaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listContaFragment"
+        android:name="com.example.projetogrande.ListViewModel.ListContaFragment"
+        android:label="ListContaFragment" >
+        <action
+            android:id="@+id/action_listContaFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_listContaFragment_to_createconta"
+            app:destination="@id/createconta" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginContaFragment"
+        android:name="com.example.projetogrande.LoginContaFragment"
+        android:label="fragment_login_conta"
+        tools:layout="@layout/fragment_login_conta" >
+        <action
+            android:id="@+id/action_loginContaFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+</navigation>
