@@ -12,8 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.projetogrande.Adapters.RecViewAdapter
 import com.example.projetogrande.R
-import com.example.projetogrande.database.RoomDatabase
-import com.example.projetogrande.models.Conta
+import com.example.projetogrande.database.AppDb
 import kotlinx.android.synthetic.main.fragment_list_conta_.*
 
 class ListContaFragment : Fragment() {
@@ -48,9 +47,8 @@ class ListContaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         var recycleListView = listViewConta
-        recycleListView.adapter = RecViewAdapter(lista)
+        recycleListView.adapter = RecViewAdapter(listViewModel.all(AppDb.getInstance(requireContext())))
         recycleListView.layoutManager = LinearLayoutManager(requireContext())
 
         btn_retroceder.setOnClickListener {
