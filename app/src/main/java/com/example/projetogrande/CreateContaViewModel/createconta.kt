@@ -1,4 +1,4 @@
-package com.example.projetogrande.CreateViewModel
+package com.example.projetogrande.CreateContaViewModel
 
 import android.os.Build
 import android.os.Bundle
@@ -30,7 +30,6 @@ class createconta : Fragment() {
         viewModel = ViewModelProviders.of(this).get(ContaFormViewModel::class.java)
 
     }
-
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

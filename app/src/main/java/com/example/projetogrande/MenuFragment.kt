@@ -23,5 +23,11 @@ class MenuFragment : Fragment() {
         btn_listar_conta.setOnClickListener {
             findNavController().navigate(R.id.action_menuFragment_to_listContaFragment)
         }
+        btn_Criar_morador.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_moradorFragment)
+        }
+        btn_Lista_Morador.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_listMoradorFragment)
+        }
     }
 }

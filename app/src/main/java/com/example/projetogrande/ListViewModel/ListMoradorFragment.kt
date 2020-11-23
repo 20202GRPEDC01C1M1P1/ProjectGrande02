@@ -3,22 +3,23 @@ package com.example.projetogrande.ListViewModel
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projetogrande.Adapters.RecViewContaAdapter
+import com.example.projetogrande.Adapters.RecViewMoradorAdapter
 import com.example.projetogrande.R
 import com.example.projetogrande.database.AppDb
-import kotlinx.android.synthetic.main.fragment_list_conta_.*
+import kotlinx.android.synthetic.main.fragment_list_morador.*
 
-class ListContaFragment : Fragment() {
+class ListMoradorFragment : Fragment() {
 
     private var columnCount = 1
-    private lateinit var listViewModel : ListViewContaModel
+    private lateinit var listViewModel : ListViewMoradorModel
     private lateinit var listViewModelFactory : ListViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,24 +39,24 @@ class ListContaFragment : Fragment() {
 
         listViewModel =
             ViewModelProvider(this, listViewModelFactory)
-                .get(ListViewContaModel::class.java)
+                .get(ListViewMoradorModel::class.java)
 
-        return inflater.inflate(R.layout.fragment_list_conta_, container, false)
+        return inflater.inflate(R.layout.fragment_list_morador, container, false)
 
     }
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var recycleListView = listViewConta
-        recycleListView.adapter = RecViewContaAdapter(listViewModel.all(AppDb.getInstance(requireContext())))
+        var recycleListView = listViewMorador
+        recycleListView.adapter = RecViewMoradorAdapter(listViewModel.all(AppDb.getInstance(requireContext())))
         recycleListView.layoutManager = LinearLayoutManager(requireContext())
 
-        btn_retroceder.setOnClickListener {
-            findNavController().navigate(R.id.action_listContaFragment_to_menuFragment)
+        btn_retroceder_morador.setOnClickListener {
+            findNavController().navigate(R.id.action_listMoradorFragment_to_menuFragment)
         }
-        btn_list_create.setOnClickListener {
-            findNavController().navigate(R.id.action_listContaFragment_to_createconta)
+        btn_create_morador.setOnClickListener {
+            findNavController().navigate(R.id.action_listMoradorFragment_to_moradorFragment)
         }
     }
 
@@ -66,7 +67,7 @@ class ListContaFragment : Fragment() {
         // TODO: Customize parameter initialization
         @JvmStatic
         fun newInstance(columnCount: Int) =
-            ListContaFragment().apply {
+            ListMoradorFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }

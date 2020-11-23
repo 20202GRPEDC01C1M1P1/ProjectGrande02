@@ -14,6 +14,7 @@ object AppDb {
                     "dbApp"
                 )
                 .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
                 .build()
         }
         return db as RoomDatabase

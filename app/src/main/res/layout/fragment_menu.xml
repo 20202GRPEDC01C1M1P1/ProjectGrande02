@@ -26,4 +26,24 @@
         android:text="Ver Lista de Contas"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_inserir_conta" />
+
+    <Button
+        android:id="@+id/btn_Criar_morador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:text="Inserir Morador"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_listar_conta" />
+
+    <Button
+        android:id="@+id/btn_Lista_Morador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:text="Ver Lista de Morador"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Criar_morador" />
 </androidx.constraintlayout.widget.ConstraintLayout>

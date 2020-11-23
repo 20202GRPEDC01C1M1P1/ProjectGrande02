@@ -4,15 +4,15 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-
 @Entity
-data class Conta(
-    var nome: String,
-    var valor: String,
+data class Morador (
+    var nomeMorador: String,
+    var apartamento: String,
+    var numeroApartamento: String,
     @PrimaryKey(autoGenerate = true)
-    var idConta: Int? = null,
+    var idMorador: Int? = null,
     @ForeignKey(entity = Condomino::class,
         parentColumns = ["id"],
-        childColumns = ["condId"])
-    var condId : Int? = null
+        childColumns = ["moraId"])
+    var moraId : Int? = null
 )

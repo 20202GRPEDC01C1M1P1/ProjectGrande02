@@ -1,4 +1,4 @@
-package com.example.projetogrande.CreateViewModel
+package com.example.projetogrande.CreateContaViewModel
 
 import androidx.lifecycle.ViewModel
 import com.example.projetogrande.DAO.ContaDAO

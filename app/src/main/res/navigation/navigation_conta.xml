@@ -16,10 +16,16 @@
         <action
             android:id="@+id/action_menuFragment_to_listContaFragment"
             app:destination="@id/listContaFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_moradorFragment"
+            app:destination="@id/moradorFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_listMoradorFragment"
+            app:destination="@id/listMoradorFragment" />
     </fragment>
     <fragment
         android:id="@+id/createconta"
-        android:name="com.example.projetogrande.CreateViewModel.createconta"
+        android:name="com.example.projetogrande.CreateContaViewModel.createconta"
         android:label="fragment_createconta"
         tools:layout="@layout/fragment_createconta" >
         <action
@@ -42,11 +48,45 @@
     </fragment>
     <fragment
         android:id="@+id/loginContaFragment"
-        android:name="com.example.projetogrande.LoginContaFragment"
+        android:name="com.example.projetogrande.LoginViewModel.LoginContaFragment"
         android:label="fragment_login_conta"
         tools:layout="@layout/fragment_login_conta" >
         <action
             android:id="@+id/action_loginContaFragment_to_menuFragment"
+            app:destination="@id/menuFragment"/>
+        <action
+            android:id="@+id/action_loginContaFragment_to_cadastroFragment"
+            app:destination="@id/cadastroFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cadastroFragment"
+        android:name="com.example.projetogrande.CadastroViewModel.CadastroFragment"
+        android:label="fragment_cadastro"
+        tools:layout="@layout/fragment_cadastro" >
+        <action
+            android:id="@+id/action_cadastroFragment_to_loginContaFragment"
+            app:destination="@id/loginContaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/moradorFragment"
+        android:name="com.example.projetogrande.CreateMoradorViewModel.MoradorFragment"
+        android:label="MoradorFragment" >
+        <action
+            android:id="@+id/action_moradorFragment_to_listMoradorFragment"
+            app:destination="@id/listMoradorFragment" />
+        <action
+            android:id="@+id/action_moradorFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listMoradorFragment"
+        android:name="com.example.projetogrande.ListViewModel.ListMoradorFragment"
+        android:label="ListMoradorFragment" >
+        <action
+            android:id="@+id/action_listMoradorFragment_to_moradorFragment"
+            app:destination="@id/moradorFragment" />
+        <action
+            android:id="@+id/action_listMoradorFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
     </fragment>
 </navigation>

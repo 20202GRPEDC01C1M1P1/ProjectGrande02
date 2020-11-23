@@ -9,10 +9,10 @@ import com.example.projetogrande.R
 import com.example.projetogrande.models.Conta
 import kotlinx.android.synthetic.main.recyclerview_resource.view.*
 
-class RecViewAdapter (
-    private val lista: List<Conta>
+class RecViewContaAdapter (
+    private val listaConta: List<Conta>
 )
-    : RecyclerView.Adapter<RecViewAdapter.ContaViewHolder>()
+    : RecyclerView.Adapter<RecViewContaAdapter.ContaViewHolder>()
 {
 
     class ContaViewHolder(itemView: View):
@@ -29,9 +29,9 @@ class RecViewAdapter (
     }
 
     override fun onBindViewHolder(holder: ContaViewHolder, position: Int) {
-        val conta = lista[position]
+        val conta = listaConta[position]
         holder.viewContaNome.text = conta.nome
         holder.viewContaValor.text = conta.valor
     }
-    override fun getItemCount(): Int = lista.size
+    override fun getItemCount(): Int = listaConta.size
 }
