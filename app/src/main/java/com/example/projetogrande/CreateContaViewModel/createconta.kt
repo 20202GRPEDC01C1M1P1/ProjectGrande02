@@ -6,11 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.projetogrande.R
 import com.example.projetogrande.database.AppDb
+import com.example.projetogrande.models.Conta
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_createconta.*
 
 class createconta : Fragment() {
@@ -45,8 +48,23 @@ class createconta : Fragment() {
         confirm.setOnClickListener {
             var nome = editTextTextPersonName3.text.toString()
             var valor = editTextNumberDecimal2.text.toString()
-            var db = AppDb.getInstance(requireContext().applicationContext)
-            viewModel.store(db.contaDao(), nome, valor)
+
+            viewModel.store(Conta(nome,valor))
+                .addOnSuccessListener {
+                    Toast.makeText(
+                        requireContext(),
+                    "Conta adicionada",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    findNavController().popBackStack()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(
+                        requireContext(),
+                        it.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
 
             findNavController().navigate(R.id.action_createconta_to_menuFragment)
         }

@@ -3,6 +3,7 @@ package com.example.projetogrande.models
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import com.google.firebase.firestore.DocumentId
 
 @Entity
 data class Morador (
@@ -10,9 +11,6 @@ data class Morador (
     var apartamento: String,
     var numeroApartamento: String,
     @PrimaryKey(autoGenerate = true)
-    var idMorador: Int? = null,
-    @ForeignKey(entity = Condomino::class,
-        parentColumns = ["id"],
-        childColumns = ["moraId"])
-    var moraId : Int? = null
+    @DocumentId
+    var idMorador: Int? = null
 )

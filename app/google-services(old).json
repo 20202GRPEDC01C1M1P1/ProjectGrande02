@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "648737610963",
+    "firebase_url": "https://projeto-de-bloco-d28c0.firebaseio.com",
+    "project_id": "projeto-de-bloco-d28c0",
+    "storage_bucket": "projeto-de-bloco-d28c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648737610963:android:69614365a5ec4fe470c826",
+        "android_client_info": {
+          "package_name": "com.example.projetogrande"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "648737610963-q33an4ah2id3ufbvt2ppkboemcr0l8fp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwEapJQmVfM36FeLqkC-m0teYsyIaWvzM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "648737610963-q33an4ah2id3ufbvt2ppkboemcr0l8fp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

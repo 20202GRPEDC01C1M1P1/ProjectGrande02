@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.projetogrande.Adapters.RecViewContaAdapter
+import com.example.projetogrande.ListViewModel.ListMoradorFragment.Companion.ARG_COLUMN_COUNT
 import com.example.projetogrande.R
 import com.example.projetogrande.database.AppDb
 import com.example.projetogrande.models.Conta
@@ -27,26 +28,25 @@ class ListContaFragment : Fragment() {
     private var columnCount = 1
     private lateinit var listViewModel : ListViewContaModel
     private lateinit var listViewModelFactory : ListViewModelFactory
-/*
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
-    }*/
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       // listVewModel =
-/*
+
         listViewModelFactory = ListViewModelFactory()
 
         listViewModel =
             ViewModelProvider(this, listViewModelFactory)
-                .get(ListViewContaModel::class.java)*/
+                .get(ListViewContaModel::class.java)
 
 
         return inflater.inflate(R.layout.fragment_list_conta_, container, false)
@@ -55,8 +55,7 @@ class ListContaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       /* listViewModel = ViewModelProviders.of(this).get(ListViewContaModel::class.java)
-        //val task =
+       listViewModel = ViewModelProviders.of(this).get(ListViewContaModel::class.java)
             listViewModel
             .all()
             .addSnapshotListener { querySnapshot, error ->
@@ -67,7 +66,7 @@ class ListContaFragment : Fragment() {
                         listViewConta.adapter = RecViewContaAdapter(listaContas)
                     }
                 }
-            }*/
+            }
 
        /* var db = FirebaseFirestore.getInstance()
         var task = db
@@ -105,7 +104,7 @@ class ListContaFragment : Fragment() {
 
     }
 
-/*    companion object {
+    companion object {
         // TODO: Customize parameter argument names
         const val ARG_COLUMN_COUNT = "column-count"
 
@@ -117,5 +116,5 @@ class ListContaFragment : Fragment() {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }
             }
-    }*/
+    }
 }
