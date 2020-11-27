@@ -7,12 +7,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ListAdapter
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.projetogrande.Adapters.RecViewContaAdapter
 import com.example.projetogrande.R
 import com.example.projetogrande.database.AppDb
+import com.example.projetogrande.models.Conta
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_list_conta_.*
 
 class ListContaFragment : Fragment() {
@@ -20,36 +27,73 @@ class ListContaFragment : Fragment() {
     private var columnCount = 1
     private lateinit var listViewModel : ListViewContaModel
     private lateinit var listViewModelFactory : ListViewModelFactory
-
+/*
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
-    }
+    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+       // listVewModel =
+/*
         listViewModelFactory = ListViewModelFactory()
 
         listViewModel =
             ViewModelProvider(this, listViewModelFactory)
-                .get(ListViewContaModel::class.java)
+                .get(ListViewContaModel::class.java)*/
+
 
         return inflater.inflate(R.layout.fragment_list_conta_, container, false)
 
     }
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var recycleListView = listViewConta
-        recycleListView.adapter = RecViewContaAdapter(listViewModel.all(AppDb.getInstance(requireContext())))
-        recycleListView.layoutManager = LinearLayoutManager(requireContext())
+       /* listViewModel = ViewModelProviders.of(this).get(ListViewContaModel::class.java)
+        //val task =
+            listViewModel
+            .all()
+            .addSnapshotListener { querySnapshot, error ->
+                if (error != null) {
+                } else if (querySnapshot != null) {
+                    var listaContas = querySnapshot.toObjects(Conta::class.java)
+                    if (!listaContas.isNullOrEmpty()) {
+                        listViewConta.adapter = RecViewContaAdapter(listaContas)
+                    }
+                }
+            }*/
+
+       /* var db = FirebaseFirestore.getInstance()
+        var task = db
+            .collection("contas")
+            .get()
+        task
+            .addOnSuccessListener {
+                val listaContas = it.toObjects(Conta::class.java)
+                var recycleListView = listViewConta
+                recycleListView.layoutManager = LinearLayoutManager(requireContext())
+                recycleListView.adapter = RecViewContaAdapter(listaContas)
+            }
+            .addOnFailureListener {
+                Toast.makeText(
+                    requireContext(),
+                    it.message,
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+            .addOnCompleteListener{
+                Toast.makeText(
+                    requireContext(),
+                    "Sucesso",
+                    Toast.LENGTH_LONG
+                ).show()
+            }*/
 
         btn_retroceder.setOnClickListener {
             findNavController().navigate(R.id.action_listContaFragment_to_menuFragment)
@@ -57,9 +101,11 @@ class ListContaFragment : Fragment() {
         btn_list_create.setOnClickListener {
             findNavController().navigate(R.id.action_listContaFragment_to_createconta)
         }
+
+
     }
 
-    companion object {
+/*    companion object {
         // TODO: Customize parameter argument names
         const val ARG_COLUMN_COUNT = "column-count"
 
@@ -71,5 +117,5 @@ class ListContaFragment : Fragment() {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }
             }
-    }
+    }*/
 }
