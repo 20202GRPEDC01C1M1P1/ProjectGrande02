@@ -11,14 +11,14 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.projetogrande.R
-import com.example.projetogrande.database.AppDb
+import com.example.projetogrande.ViewModels.ContaViewmodel
 import com.example.projetogrande.models.Conta
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_createconta.*
 
-class createconta : Fragment() {
+public final class createconta : Fragment() {
 
     private lateinit var viewModel : ContaFormViewModel
+    private lateinit var contaViewModel : ContaViewmodel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +30,16 @@ class createconta : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        activity?.let {
+            contaViewModel = ViewModelProviders.of(it)
+                .get(ContaViewmodel::class.java)
+            if (contaViewModel.conta != null){
+                var conta = contaViewModel.conta
+                addInputInfo(conta)
+            }
+        }
         viewModel = ViewModelProviders.of(this).get(ContaFormViewModel::class.java)
+
 
     }
 
@@ -46,10 +55,12 @@ class createconta : Fragment() {
         }
 
         confirm.setOnClickListener {
+
             var nome = editTextTextPersonName3.text.toString()
             var valor = editTextNumberDecimal2.text.toString()
+            var conta = Conta(nome,valor)
 
-            viewModel.store(Conta(nome,valor))
+            viewModel.store(conta)
                 .addOnSuccessListener {
                     Toast.makeText(
                         requireContext(),
@@ -66,7 +77,13 @@ class createconta : Fragment() {
                     ).show()
                 }
 
-            findNavController().navigate(R.id.action_createconta_to_menuFragment)
         }
+    }
+    private fun addInputInfo(conta: Conta?) {
+        editTextNumberDecimal2.setText(conta?.valor)
+        editTextTextPersonName3.setText(conta?.nome)
+
+        deleteButton.isEnabled = true
+        deleteButton.visibility = View.VISIBLE
     }
 }

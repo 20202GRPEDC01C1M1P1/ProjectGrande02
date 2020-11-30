@@ -17,11 +17,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.projetogrande.Adapters.RecViewContaAdapter
 import com.example.projetogrande.ListViewModel.ListMoradorFragment.Companion.ARG_COLUMN_COUNT
 import com.example.projetogrande.R
+import com.example.projetogrande.ViewModels.ContaViewmodel
 import com.example.projetogrande.database.AppDb
 import com.example.projetogrande.models.Conta
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_list_conta_.*
+import kotlinx.android.synthetic.main.fragment_menu.*
 
 class ListContaFragment : Fragment() {
 
@@ -55,6 +57,7 @@ class ListContaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
        listViewModel = ViewModelProviders.of(this).get(ListViewContaModel::class.java)
             listViewModel
             .all()
@@ -64,6 +67,7 @@ class ListContaFragment : Fragment() {
                     var listaContas = querySnapshot.toObjects(Conta::class.java)
                     if (!listaContas.isNullOrEmpty()) {
                         listViewConta.adapter = RecViewContaAdapter(listaContas)
+                        listViewConta.layoutManager = LinearLayoutManager(requireContext())
                     }
                 }
             }

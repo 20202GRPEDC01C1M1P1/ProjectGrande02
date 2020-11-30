@@ -11,7 +11,8 @@ import com.google.firebase.firestore.QuerySnapshot
 class ListViewContaModel : ViewModel() {
     fun all(): CollectionReference {
         var db = FirebaseFirestore.getInstance()
-        return db
             .collection("contas")
+        return db
+
     }
 }
