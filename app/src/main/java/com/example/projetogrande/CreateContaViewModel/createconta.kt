@@ -54,17 +54,60 @@ public final class createconta : Fragment() {
             findNavController().navigate(R.id.action_createconta_to_listContaFragment)
         }
 
+
+
         confirm.setOnClickListener {
 
             var nome = editTextTextPersonName3.text.toString()
             var valor = editTextNumberDecimal2.text.toString()
             var conta = Conta(nome,valor)
 
-            viewModel.store(conta)
+            if (contaViewModel.conta?.id != null) {
+                contaViewModel.conta!!.nome = nome
+                contaViewModel.conta!!.valor = valor
+                viewModel.update(contaViewModel.conta!!)
+                    .addOnSuccessListener {
+                        Toast.makeText(
+                            requireContext(),
+                            "Conta alterada",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        findNavController().popBackStack()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(
+                            requireContext(),
+                            it.message,
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+
+            } else {
+                viewModel.store(conta)
+                    .addOnSuccessListener {
+                        Toast.makeText(
+                            requireContext(),
+                            "Conta adicionada",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        findNavController().popBackStack()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(
+                            requireContext(),
+                            it.message,
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+            }
+        }
+
+        deleteButton.setOnClickListener{
+            viewModel.delete(contaViewModel.conta!!)
                 .addOnSuccessListener {
                     Toast.makeText(
                         requireContext(),
-                    "Conta adicionada",
+                        "Conta deletada",
                         Toast.LENGTH_LONG
                     ).show()
                     findNavController().popBackStack()
@@ -76,7 +119,6 @@ public final class createconta : Fragment() {
                         Toast.LENGTH_LONG
                     ).show()
                 }
-
         }
     }
     private fun addInputInfo(conta: Conta?) {

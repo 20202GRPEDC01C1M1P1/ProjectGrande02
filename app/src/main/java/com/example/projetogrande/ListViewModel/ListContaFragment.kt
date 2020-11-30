@@ -32,13 +32,13 @@ class ListContaFragment : Fragment(){
      lateinit var contaViewmodel: ContaViewmodel
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    /*override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
-    }
+    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,7 +53,7 @@ class ListContaFragment : Fragment(){
 
         contaViewmodel =
             ViewModelProvider(requireActivity())
-                .get(contaViewmodel::class.java)
+                .get(ContaViewmodel::class.java)
 
 
         return inflater.inflate(R.layout.fragment_list_conta_, container, false)
@@ -62,15 +62,13 @@ class ListContaFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-       listViewModel = ViewModelProviders.of(this).get(ListViewContaModel::class.java)
             listViewModel
             .all()
             .addSnapshotListener { querySnapshot, error ->
                 if (error != null) {
                 } else if (querySnapshot != null) {
                     var listaContas = querySnapshot.toObjects(Conta::class.java)
-                    if (!listaContas.isNullOrEmpty()) {
+                    if (!listaContas.isNullOrEmpty() && listViewConta != null) {
                         listViewConta.adapter = RecViewContaAdapter(listaContas) {
                             var conta = it
                             contaViewmodel.conta = conta
@@ -116,19 +114,5 @@ class ListContaFragment : Fragment(){
         }
 
 
-    }
-
-    companion object {
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-            ListContaFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
-                }
-            }
     }
 }

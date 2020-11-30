@@ -12,17 +12,25 @@ class ContaFormViewModel : ViewModel() {
     fun store(conta: Conta): Task<DocumentReference> {
         var db = FirebaseFirestore.getInstance()
 
-        val id = db
+/*        val id = db
             .collection("contas")
-            .document()
+            .document()*/
 
-        conta.id = id.toString()
+            var task = db
+                .collection("contas")
+                .add(conta)
+            return task
+        }
 
-        var task = db
-            .collection("contas")
-            .add(conta)
-        return task
-    }
+        fun update(conta: Conta): Task<Void> {
+            var db = FirebaseFirestore.getInstance()
+
+                var task = db
+                    .collection("contas")
+                    .document(conta.id!!)
+                    .set(conta)
+                return task
+            }
 
     fun delete(conta: Conta): Task<Void> {
         var db = FirebaseFirestore.getInstance()
