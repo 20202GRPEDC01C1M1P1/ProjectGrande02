@@ -25,11 +25,16 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_list_conta_.*
 import kotlinx.android.synthetic.main.fragment_menu.*
 
-class ListContaFragment : Fragment() {
+class ListContaFragment : Fragment(), (Conta) -> Unit {
+    override fun invoke(p1: Conta){
+        var conta = Unit
+        findNavController().navigate(R.id.createconta)
+    }
 
-    private var columnCount = 1
-    private lateinit var listViewModel : ListViewContaModel
-    private lateinit var listViewModelFactory : ListViewModelFactory
+     var columnCount = 1
+     lateinit var listViewModel : ListViewContaModel
+     lateinit var listViewModelFactory : ListViewModelFactory
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +71,9 @@ class ListContaFragment : Fragment() {
                 } else if (querySnapshot != null) {
                     var listaContas = querySnapshot.toObjects(Conta::class.java)
                     if (!listaContas.isNullOrEmpty()) {
-                        listViewConta.adapter = RecViewContaAdapter(listaContas)
+                        listViewConta.adapter = RecViewContaAdapter(listaContas) {
+
+                        }
                         listViewConta.layoutManager = LinearLayoutManager(requireContext())
                     }
                 }
