@@ -23,17 +23,13 @@ import com.example.projetogrande.models.Conta
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_list_conta_.*
-import kotlinx.android.synthetic.main.fragment_menu.*
 
-class ListContaFragment : Fragment(), (Conta) -> Unit {
-    override fun invoke(p1: Conta){
-        var conta = Unit
-        findNavController().navigate(R.id.createconta)
-    }
+class ListContaFragment : Fragment(){
 
      var columnCount = 1
      lateinit var listViewModel : ListViewContaModel
      lateinit var listViewModelFactory : ListViewModelFactory
+     lateinit var contaViewmodel: ContaViewmodel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +51,10 @@ class ListContaFragment : Fragment(), (Conta) -> Unit {
             ViewModelProvider(this, listViewModelFactory)
                 .get(ListViewContaModel::class.java)
 
+        contaViewmodel =
+            ViewModelProvider(requireActivity())
+                .get(contaViewmodel::class.java)
+
 
         return inflater.inflate(R.layout.fragment_list_conta_, container, false)
 
@@ -72,6 +72,9 @@ class ListContaFragment : Fragment(), (Conta) -> Unit {
                     var listaContas = querySnapshot.toObjects(Conta::class.java)
                     if (!listaContas.isNullOrEmpty()) {
                         listViewConta.adapter = RecViewContaAdapter(listaContas) {
+                            var conta = it
+                            contaViewmodel.conta = conta
+                            findNavController().navigate(R.id.createconta)
 
                         }
                         listViewConta.layoutManager = LinearLayoutManager(requireContext())
