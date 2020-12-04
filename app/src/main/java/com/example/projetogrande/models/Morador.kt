@@ -1,7 +1,6 @@
 package com.example.projetogrande.models
 
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.google.firebase.firestore.DocumentId
 

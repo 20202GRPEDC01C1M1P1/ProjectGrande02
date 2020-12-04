@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_menuFragment_to_listMoradorFragment"
             app:destination="@id/listMoradorFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_climaFragment"
+            app:destination="@id/climaFragment" />
     </fragment>
     <fragment
         android:id="@+id/createconta"
@@ -89,4 +92,9 @@
             android:id="@+id/action_listMoradorFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/climaFragment"
+        android:name="com.example.projetogrande.API.ClimaFragment"
+        android:label="fragment_clima"
+        tools:layout="@layout/fragment_clima" />
 </navigation>

@@ -13,6 +13,5 @@ class ListViewContaModel : ViewModel() {
         var db = FirebaseFirestore.getInstance()
             .collection("contas")
         return db
-
     }
 }

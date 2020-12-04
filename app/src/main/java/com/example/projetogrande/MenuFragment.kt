@@ -29,5 +29,8 @@ class MenuFragment : Fragment() {
         btn_Lista_Morador.setOnClickListener {
             findNavController().navigate(R.id.action_menuFragment_to_listMoradorFragment)
         }
+        btn_temperatura.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_climaFragment)
+        }
     }
 }

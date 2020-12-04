@@ -46,4 +46,14 @@
         android:text="Ver Lista de Morador"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_Criar_morador" />
+
+    <Button
+        android:id="@+id/btn_temperatura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:text="Ver Temperatura"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Lista_Morador" />
 </androidx.constraintlayout.widget.ConstraintLayout>
