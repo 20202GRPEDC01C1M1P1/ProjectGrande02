@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_menuFragment_to_climaFragment"
             app:destination="@id/climaFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_propagandaActivity"
+            app:destination="@id/propagandaActivity" />
     </fragment>
     <fragment
         android:id="@+id/createconta"
@@ -97,4 +100,9 @@
         android:name="com.example.projetogrande.API.ClimaFragment"
         android:label="fragment_clima"
         tools:layout="@layout/fragment_clima" />
+    <activity
+        android:id="@+id/propagandaActivity"
+        android:name="com.example.projetogrande.PropagandaActivity"
+        android:label="activity_propaganda"
+        tools:layout="@layout/activity_propaganda" />
 </navigation>

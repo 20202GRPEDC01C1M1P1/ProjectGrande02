@@ -11,11 +11,6 @@ import com.google.firebase.firestore.QuerySnapshot
 class ContaFormViewModel : ViewModel() {
     fun store(conta: Conta): Task<DocumentReference> {
         var db = FirebaseFirestore.getInstance()
-
-/*        val id = db
-            .collection("contas")
-            .document()*/
-
             var task = db
                 .collection("contas")
                 .add(conta)

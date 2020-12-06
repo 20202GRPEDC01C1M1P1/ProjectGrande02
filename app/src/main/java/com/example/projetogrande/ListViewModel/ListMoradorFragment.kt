@@ -10,7 +10,6 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.projetogrande.Adapters.RecViewContaAdapter
 import com.example.projetogrande.Adapters.RecViewMoradorAdapter
 import com.example.projetogrande.R
 import com.example.projetogrande.database.AppDb

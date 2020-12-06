@@ -13,6 +13,7 @@ class MenuFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.fragment_menu, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,6 +32,9 @@ class MenuFragment : Fragment() {
         }
         btn_temperatura.setOnClickListener {
             findNavController().navigate(R.id.action_menuFragment_to_climaFragment)
+        }
+        btn_propaganda.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_propagandaActivity)
         }
     }
 }

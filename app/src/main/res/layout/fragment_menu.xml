@@ -56,4 +56,15 @@
         android:text="Ver Temperatura"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_Lista_Morador" />
+
+    <Button
+        android:id="@+id/btn_propaganda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:text="Ver Propaganda"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_temperatura" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,5 @@
 package com.example.projetogrande.API
 
-import com.example.projetogrande.API.Temperatura
-import com.example.projetogrande.API.Temperaturas
 import retrofit2.http.*
 
 interface TemperaturaService {
