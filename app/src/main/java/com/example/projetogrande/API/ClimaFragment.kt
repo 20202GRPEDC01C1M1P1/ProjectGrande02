@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.projetogrande.Adapters.RecViewTemperaturaAdapter
 import com.example.projetogrande.R
 import kotlinx.android.synthetic.main.fragment_clima.*
 
@@ -29,11 +32,10 @@ class ClimaFragment : Fragment() {
         listViewModel
             .listaTemperatura
             .observe(viewLifecycleOwner){
-                idListView.adapter = ArrayAdapter(
-                    requireContext(),
-                    android.R.layout.simple_list_item_1,
-                    it
+                idListView.adapter = RecViewTemperaturaAdapter(
+                    listViewModel.listaTemperatura.value!!
                 )
+                idListView.layoutManager = LinearLayoutManager(requireContext())
             }
         return root
     }

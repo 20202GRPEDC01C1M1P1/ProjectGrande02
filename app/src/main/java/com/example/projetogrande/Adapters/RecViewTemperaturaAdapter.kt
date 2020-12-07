@@ -25,17 +25,17 @@ class RecViewTemperaturaAdapter (
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TemperaturaViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.clima_lista_item, parent, false)
+            .inflate(R.layout.recyclerview_resource2, parent, false)
         val temperaturaViewHolder = TemperaturaViewHolder(view)
         return  temperaturaViewHolder
     }
 
     override fun onBindViewHolder(holder: TemperaturaViewHolder, position: Int) {
         val temperatura = listaTemperatura.get(position)
-        holder.viewTemperaturaMaxima.text = temperatura.temperature!!.maximum!!.value
-        holder.viewTemperaturaMinima.text = temperatura.temperature!!.minimum!!.value
-        holder.viewLink.text = temperatura.link
-        holder.viewDate.text = temperatura.date
+        holder.viewTemperaturaMaxima.text = temperatura.temperature!!.maximum!!.value.toString()
+        holder.viewTemperaturaMinima.text = temperatura.temperature!!.minimum!!.value.toString()
+        holder.viewLink.text = temperatura.link.toString()
+        holder.viewDate.text = temperatura.date.toString()
     }
     override fun getItemCount(): Int = listaTemperatura.size
 }
