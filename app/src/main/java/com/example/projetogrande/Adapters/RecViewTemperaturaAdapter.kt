@@ -32,8 +32,8 @@ class RecViewTemperaturaAdapter (
 
     override fun onBindViewHolder(holder: TemperaturaViewHolder, position: Int) {
         val temperatura = listaTemperatura[position]
-        holder.viewTemperaturaMaxima.text = temperatura.maxTemp
-        holder.viewTemperaturaMinima.text = temperatura.minTemp
+        holder.viewTemperaturaMaxima.text = temperatura.maximum!!.value.toString()
+        holder.viewTemperaturaMinima.text = temperatura.minimum!!.value.toString()
         holder.viewLink.text = temperatura.link
         holder.viewDate.text = temperatura.date
     }

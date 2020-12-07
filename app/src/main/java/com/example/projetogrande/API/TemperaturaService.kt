@@ -5,7 +5,7 @@ import retrofit2.http.*
 interface TemperaturaService {
 
     @GET("/alarms/v1/5day/2154564")
-    suspend fun all(@Query("apikey") apikey: String = "E8p1hJDqVru7jmDyf1EwElm5NNwUFPlt"): Temperaturas
+    suspend fun all(@Query("apikey") apikey: String = "E8p1hJDqVru7jmDyf1EwElm5NNwUFPlt"): DaylyForecasts
 
     @GET("/forecasts/v1/daily/5day/{id}")
     suspend fun show(@Path("id") data: Int) : Temperatura
