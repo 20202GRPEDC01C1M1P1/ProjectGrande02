@@ -13,7 +13,7 @@ class TemperaturaViewModel: ViewModel() {
         viewModelScope.launch{
             try {
                 var temperaturas = TemperaturaInternet.getTemperaturaService().all()
-                listaTemperatura.value = temperaturas!!.DaylyForecasts
+                listaTemperatura.value = temperaturas!!.DailyForecasts!!.toList()
             }catch(e : Exception) {
                 msg.value = e.message
             }

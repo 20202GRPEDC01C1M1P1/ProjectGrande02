@@ -7,24 +7,29 @@ data class Temperatura (
     @SerializedName("Date")
     @Expose
     var date : String? = null,
-    @SerializedName("Maximum")
+    @SerializedName("Temperature")
     @Expose
-    var maximum : Maximum? = null,
-    @SerializedName("Minimum")
-    @Expose
-    var minimum: Minimum? = null,
+    var temperature: Temperature? = null,
     @SerializedName("Link")
     @Expose
     var link: String? = null
 ){
+    inner class Temperature{
+        @SerializedName("Maximum")
+        @Expose
+        var maximum : Maximum? = null
+        @SerializedName("Minimum")
+        @Expose
+        var minimum : Minimum? = null
+    }
     inner class Minimum {
         @SerializedName("Value")
         @Expose
-        var value : Double? = null
+        var value : String? = null
     }
     inner class Maximum{
         @SerializedName("Value")
         @Expose
-        var value : Double? = null
+        var value : String? = null
     }
 }
