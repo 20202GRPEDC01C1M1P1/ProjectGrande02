@@ -1,6 +1,9 @@
 package com.example.projetogrande.API
 
-class DaylyForecasts
+import com.google.gson.annotations.SerializedName
+
+data class DaylyForecasts
     (
-        var DaylyForecasts : Array<Temperatura>? = null
+    @SerializedName("DaylyForecasts")
+        var DaylyForecasts : List<Temperatura>? = null
     )

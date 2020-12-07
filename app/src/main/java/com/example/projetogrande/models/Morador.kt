@@ -10,6 +10,5 @@ data class Morador (
     var apartamento: String,
     var numeroApartamento: String,
     @PrimaryKey(autoGenerate = true)
-    @DocumentId
     var idMorador: Int? = null
 )

@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 class TemperaturaViewModel: ViewModel() {
-    var listaTemperatura = MutableLiveData<Array<Temperatura>>()
+    var listaTemperatura = MutableLiveData<List<Temperatura>>()
     var msg = MutableLiveData<String>()
 
     init {

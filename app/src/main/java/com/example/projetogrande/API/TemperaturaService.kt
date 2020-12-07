@@ -2,10 +2,12 @@ package com.example.projetogrande.API
 
 import retrofit2.http.*
 
+private const val apikey = "hFzcBauIm17YRj0mO3gIU9VA6gHAXh9G"
+
 interface TemperaturaService {
 
-    @GET("/alarms/v1/5day/2154564")
-    suspend fun all(@Query("apikey") apikey: String = "E8p1hJDqVru7jmDyf1EwElm5NNwUFPlt"): DaylyForecasts
+    @GET("/forecasts/v1/daily/5day/2729725?apikey=$apikey")
+    suspend fun all(): DaylyForecasts
 
     @GET("/forecasts/v1/daily/5day/{id}")
     suspend fun show(@Path("id") data: Int) : Temperatura
